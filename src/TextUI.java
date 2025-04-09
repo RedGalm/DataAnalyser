@@ -1,2 +1,3 @@
-public class TextUI {
+public class TextUI implements ListOperations {
+
 }
