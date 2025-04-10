@@ -1,6 +1,15 @@
-public class UserInfo implements ListOperations {
+public class UserInfo {
     private String username;
-    private MusicAlbumInfo musicAlbum;
+    private String musicAlbum;
     private int numberOfPlays;
     private double rating;
+
+    public UserInfo(String username, String musicAlbum, int numberOfPlays, double rating) {
+        this.username = username;
+        this.musicAlbum = musicAlbum;
+        this.numberOfPlays = numberOfPlays;
+        this.rating = rating;
+    }
+
+
 }
