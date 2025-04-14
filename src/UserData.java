@@ -22,7 +22,7 @@ public class UserData {
     }
 
     public String toString() {
-        return "\n played album: " + this.musicAlbum.getName() + ",\n plays: " + this.numberOfPlays + ",\n rate: " + this.rating;
+        return "\nPlayed album: " + this.musicAlbum.getName() + "\nPlays: " + this.numberOfPlays + "\nRate: " + this.rating;
     }
 
 }

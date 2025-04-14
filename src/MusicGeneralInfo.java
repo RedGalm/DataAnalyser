@@ -11,4 +11,8 @@ public abstract class MusicGeneralInfo implements CollectionsOperations {
         return this.name;
     }
 
+    public int getYear() {
+        return this.year;
+    }
+
 }

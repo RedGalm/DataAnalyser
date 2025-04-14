@@ -8,9 +8,10 @@ public class MusicAlbum extends MusicGeneralInfo {
 
     public MusicAlbum(String name, int year, String artistName) {
         super(name, year);
+        this.artistName = artistName;
         this.totalPlays = 0;
         this.avgRating = 0.0;
-        this.artistName = artistName;
+
     }
 
     public String getArtistName() {
@@ -38,5 +39,10 @@ public class MusicAlbum extends MusicGeneralInfo {
             }
         }
         this.avgRating = this.avgRating / numberOfRatings;
+    }
+
+    public String toString() {
+        return "Title: " + getName() + "\nYear of release: " + getYear() + "\nBy: " + this.artistName +
+                "\nRating: " + this.avgRating + "\nPlays: " + this.totalPlays;
     }
 }
