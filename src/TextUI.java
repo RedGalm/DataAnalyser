@@ -19,8 +19,10 @@ public class TextUI {
         String path = fileName.getAbsolutePath();
 
         try (Scanner scanner = new Scanner(Paths.get(path))) {
+            int lineNum = 0;
             while (scanner.hasNextLine()) {
                 String row = scanner.nextLine();
+                lineNum++;
                 String[] arr = row.split(",");
                 if (arr[0].equalsIgnoreCase("userAndAlbumData")) {
                     hashCode(arr[1]);
@@ -30,13 +32,13 @@ public class TextUI {
                         musicAlbumList.add(album);
                     }
                     users.get(arr[1]).add(new User(album, Integer.parseInt(arr[4]), Double.parseDouble(arr[5])));
-                }
-
-                if (arr[0].equalsIgnoreCase("artistData")) {
+                } else if (arr[0].equalsIgnoreCase("artistData")) {
                     Artist artist = new Artist(arr[1], Integer.parseInt(arr[2]));
                     if (!(this.artistList.contains(artist))) {
                         this.artistList.add(artist);
                     }
+                } else {
+                    System.out.println("Error: Unspecified data at line " + lineNum);
                 }
             }
         } catch (Exception e) {
@@ -46,7 +48,12 @@ public class TextUI {
     }
 
     public void start() {
-        
+        while (true) {
+            System.out.println("Commands list:" +
+                    "\nexit - closes program" +
+                    "\nsort - sorts data by order" +
+                    "\n");
+        }
     }
 
 
