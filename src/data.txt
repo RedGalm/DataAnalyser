@@ -1,1 +1,7 @@
-userdata,
+userAndAlbumData,Josh,Abbey Road,1969,The Beatles,4.5
+userAndAlbumData,Ann,Abbey Road,1969,The Beatles,3.9
+userAndAlbumData,Greg,Revolver,1966,The Beatles,3.5
+artistData,The Beatles,1960
+userAndAlbumData,Josh,Highway to Hell,1979,ACDC,4.9
+userAndAlbumData,Greg,Highway To Hell,1979,ACDC,4.0
+artistData,ACDC,1973

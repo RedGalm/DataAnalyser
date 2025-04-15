@@ -12,14 +12,14 @@ public class Artist extends MusicGeneralInfo {
         this.avgRating = 0.0;
     }
 
-    public void readUserData(Map<String, ArrayList<UserData>> users) {
+    public void readUserData(Map<String, ArrayList<User>> users) {
         AtomicInteger numberOfRatings = new AtomicInteger();
-        for (ArrayList<UserData> arr : users.values()) {
+        for (ArrayList<User> arr : users.values()) {
             arr.forEach(value -> {
-               if (value.getMusicAlbum().getArtistName().equals(getName())) {
+               if (value.getListenedMusicAlbum().getArtistName().equals(getName())) {
                    numberOfRatings.getAndIncrement();
-                   this.avgRating = this.avgRating + value.getMusicAlbum().getAvgRating();
-                   this.totalPlays = this.totalPlays + value.getMusicAlbum().getTotalPlays();
+                   this.avgRating = this.avgRating + value.getListenedMusicAlbum().getAvgRating();
+                   this.totalPlays = this.totalPlays + value.getListenedMusicAlbum().getTotalPlays();
                }
             });
         }

@@ -27,9 +27,9 @@ public class MusicAlbum extends MusicGeneralInfo {
     }
 
 
-    public void readUserData(Map<String, ArrayList<UserData>> users) {
+    public void readUserData(Map<String, ArrayList<User>> users) {
         int numberOfRatings = 0;
-        for (ArrayList<UserData> arr : users.values()) {
+        for (ArrayList<User> arr : users.values()) {
             if (arr.contains(getName())) {
                 numberOfRatings++;
                 arr.forEach(value -> {

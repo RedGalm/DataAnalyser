@@ -4,7 +4,7 @@ import java.util.*;
 
 public class TextUI {
     private Scanner reader;
-    private Map<String, ArrayList<UserData>> users;
+    private Map<String, ArrayList<User>> users;
     private List<MusicAlbum> musicAlbumList;
     private List<Artist> artistList;
 
