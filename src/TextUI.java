@@ -47,6 +47,7 @@ public class TextUI {
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+            System.exit(0);
         }
 
     }
