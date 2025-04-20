@@ -5,8 +5,8 @@ import java.util.*;
 public class TextUI {
     private Scanner reader;
     private Map<String, ArrayList<User>> users;
-    private List<MusicAlbum> musicAlbumList;
-    private List<Artist> artistList;
+    private List<MusicGeneralInfo> musicAlbumList;
+    private List<MusicGeneralInfo> artistList;
 
     public TextUI(Scanner reader) {
         this.reader = reader;
@@ -30,8 +30,8 @@ public class TextUI {
                     hashCode(arr[1]);
                     users.putIfAbsent(arr[1], new ArrayList<>());
                     MusicAlbum album = new MusicAlbum(arr[2], Integer.parseInt(arr[3]), arr[4]);
-                    if (!(musicAlbumList.contains(album))) {
-                        musicAlbumList.add(album);
+                    if (!(this.musicAlbumList.contains(album))) {
+                        this.musicAlbumList.add(album);
                     }
                     users.get(arr[1]).add(new User(album, Integer.parseInt(arr[4]), Double.parseDouble(arr[5])));
 
@@ -80,33 +80,52 @@ public class TextUI {
             }
 
             if (command.equalsIgnoreCase("MusicAlbums") || command.equalsIgnoreCase("Artists")) {
-                List<?> selectedList = new ArrayList<>();
+                List<MusicGeneralInfo> selectedList;
                 if (command.equalsIgnoreCase("MusicAlbums")) {
                     selectedList = this.musicAlbumList;
                 } else {
                     selectedList = this.artistList;
                 }
 
+                while (!(command.equalsIgnoreCase("back"))) {
                 System.out.println("Commands list:" +
-                        "\nexit - closes program" +
+                        "\nback - return to data set choice" +
                         "\nsort - sorts data by order" +
-                        "\nsearch - search by specified word" +
+                        "\nsearch - search by specified information" +
                         "\nprintAll - prints all data");
 
                 command = reader.nextLine();
 
-                switch (command) {
-                    case "exit":
+                switch (command.toLowerCase()) {
+                    case "back":
                         break;
                     case "sort":
+                        System.out.println("Sort by:" +
+                                "\nName" +
+                                "\nYear");
+                        command = reader.nextLine();
+                        if (command.equalsIgnoreCase("Name")) {
+                            selectedList.stream()
+                                    .sorted(Comparator.comparing(value -> value.getName()));
+                                    }
 
+                        if (command.equalsIgnoreCase("Year")) {
+                            selectedList.stream()
+                                    .sorted(Comparator.comparingInt(value -> value.getYear()));
+                        }
+                    case "search":
+                        System.out.println("Enter text");
+                        String text = reader.nextLine();
+                        selectedList.stream()
+                                .filter(value -> value.equals(text));
+                    case "printall":
+                        selectedList.forEach(System.out::println);
                 }
 
+                }
             }
-
-
-
         }
+
     }
 
     public int hashCode(String username) {
