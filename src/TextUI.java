@@ -15,12 +15,12 @@ public class TextUI {
         this.artistList = new ArrayList<>();
 
         System.out.println("Enter data filename");
-        File fileName = new File(reader.nextLine());
+        String name = reader.nextLine();
+        File fileName = new File(name);
         String path = fileName.getAbsolutePath();
 
-        try (Scanner scanner = new Scanner(Paths.get(path))) {
+        try (Scanner scanner = new Scanner(Paths.get("/repository/DataAnalyser/src/data.txt"))) {
             int lineNum = 0;
-
             while (scanner.hasNextLine()) {
                 String row = scanner.nextLine();
                 lineNum++;
@@ -42,7 +42,7 @@ public class TextUI {
                     }
 
                 } else {
-                    System.out.println("Error: Unspecified data at the line " + lineNum);
+                    System.out.println("Unspecified data at the line: " + lineNum);
                 }
             }
         } catch (Exception e) {
