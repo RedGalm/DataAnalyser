@@ -32,7 +32,7 @@ public class MusicAlbum extends MusicGeneralInfo {
         AtomicInteger numberOfRatings = new AtomicInteger();
         for (ArrayList<User> arr : users.values()) {
             arr.forEach(value -> {
-               if (value.getListenedMusicAlbum().equals(this)) {
+               if (value.getListenedMusicAlbum().getName().equals(getName())) {
                    numberOfRatings.getAndIncrement();
                    this.avgRating = this.avgRating + value.getRating();
                    this.totalPlays = this.totalPlays + value.getNumberOfPlays();

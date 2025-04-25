@@ -84,7 +84,9 @@ public class TextUI {
                 if (command.equalsIgnoreCase("userInfo")) {
                     System.out.println("Enter user name");
                     String user = reader.nextLine();
-                    this.users.get(user).forEach(System.out::println);
+                    if (this.users.containsKey(user)) {
+                        this.users.get(user).forEach(System.out::println);
+                    }
                 }
 
                 if (command.equalsIgnoreCase("printAll")) {
