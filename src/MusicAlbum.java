@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class MusicAlbum extends MusicGeneralInfo {
     private int totalPlays;
@@ -28,17 +29,18 @@ public class MusicAlbum extends MusicGeneralInfo {
 
 
     public void readUserData(Map<String, ArrayList<User>> users) {
-        int numberOfRatings = 0;
+        AtomicInteger numberOfRatings = new AtomicInteger();
         for (ArrayList<User> arr : users.values()) {
-            if (arr.contains(getName())) {
-                numberOfRatings++;
-                arr.forEach(value -> {
+            arr.forEach(value -> {
+               if (value.getListenedMusicAlbum().equals(this)) {
+                   numberOfRatings.getAndIncrement();
                    this.avgRating = this.avgRating + value.getRating();
                    this.totalPlays = this.totalPlays + value.getNumberOfPlays();
-                });
-            }
+               }
+            });
+
         }
-        this.avgRating = this.avgRating / numberOfRatings;
+        this.avgRating = this.avgRating / numberOfRatings.get();
     }
 
     public String toString() {

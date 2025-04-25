@@ -28,7 +28,7 @@ public class Artist extends MusicGeneralInfo {
     }
 
     public String toString() {
-        return "Title: " + getName() + "\nFormed: " + getYear() + "\nRating: " + this.avgRating +
+        return "Artist: " + getName() + "\nFormed: " + getYear() + "\nRating: " + this.avgRating +
                 "\nPlays: " + this.totalPlays;
     }
 

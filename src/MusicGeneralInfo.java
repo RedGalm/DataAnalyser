@@ -15,4 +15,8 @@ public abstract class MusicGeneralInfo implements CollectionsOperations {
         return this.year;
     }
 
+    public int hashCode() {
+        return this.name.hashCode();
+    }
+
 }
