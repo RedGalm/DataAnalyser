@@ -4,4 +4,8 @@ userAndAlbumData,Greg,Revolver,1966,The Beatles,450,3.5
 artistData,The Beatles,1960
 userAndAlbumData,Josh,Highway to Hell,1979,ACDC,150,4.9
 userAndAlbumData,Greg,Highway to Hell,1979,ACDC,220,4.0
+userAndAlbumData,Josh,Metallica,1991,Metallica,500,3.7
+userAndAlbumData,Greg,Ride the Lighting,1984,Metallica,250,5.0
+userAndAlbumData,Ann,Ride the Lighting,1984,Metallica,500,4.1
 artistData,ACDC,1973
+artistData,Metallica,1981
