@@ -3,6 +3,6 @@ import java.util.Map;
 
 public interface CollectionsOperations {
 
-    public void readUserData(Map<String, ArrayList<User>> users);
+    void readUserData(Map<String, ArrayList<User>> users);
 
 }

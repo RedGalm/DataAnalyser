@@ -69,18 +69,21 @@ public class TextUI {
     public void start() {
         String command = "";
         while (!(command.equalsIgnoreCase("exit"))) {
+
             System.out.println("\nChoose data set:" +
                     "\n1 - Users" +
                     "\n2 - Music albums" +
                     "\n3 - Artists" +
                     "\nexit - closes program");
             command = reader.nextLine();
+
             if (command.equalsIgnoreCase("1")) {
                 System.out.println("Commands list:" +
                         "\nuserInfo - search for specified user" +
                         "\nprintAll - prints all data" +
                         "\nexit - closes program");
                 command = reader.nextLine();
+
                 if (command.equalsIgnoreCase("userInfo")) {
                     System.out.println("Enter user name");
                     String user = reader.nextLine();
@@ -98,6 +101,7 @@ public class TextUI {
             }
 
             if (command.equalsIgnoreCase("2") || command.equalsIgnoreCase("3")) {
+
                 if (command.equalsIgnoreCase("2")) {
                     this.selectedList = this.musicAlbumList;
                 } else {
