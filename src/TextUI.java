@@ -1,7 +1,5 @@
-import java.io.File;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class TextUI {
     private Scanner reader;
@@ -67,7 +65,7 @@ public class TextUI {
     }
 
     public void start() {
-        String command = "";
+        String command;
         while (true) {
             System.out.println("\nChoose data set:" +
                     "\n1 - Users" +
