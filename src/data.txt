@@ -9,3 +9,7 @@ userAndAlbumData,Greg,Ride the Lighting,1984,Metallica,250,5.0
 userAndAlbumData,Ann,Ride the Lighting,1984,Metallica,500,4.1
 artistData,ACDC,1973
 artistData,Metallica,1981
+userAndAlbumData,Josh,Houses of the Holy,1973,Led Zeppelin,200,3.4
+userAndAlbumData,Greg,Houses of the Holy,1973,Led Zeppelin,1000,2.9
+userAndAlbumData,Mark,Led Zeppelin II,1969,Led Zeppelin,250,4.5
+artistData,Led Zeppelin,1968
