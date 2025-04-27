@@ -53,7 +53,7 @@ public class TextUI {
                     }
 
                 } else {
-                    System.out.println("Unspecified data at the line: " + lineNum);
+                    System.out.println("Error: Unspecified data at the line " + lineNum);
                 }
             }
         } catch (Exception e) {
@@ -68,8 +68,7 @@ public class TextUI {
 
     public void start() {
         String command = "";
-        while (!(command.equalsIgnoreCase("exit"))) {
-
+        while (true) {
             System.out.println("\nChoose data set:" +
                     "\n1 - Users" +
                     "\n2 - Music albums" +
@@ -81,26 +80,35 @@ public class TextUI {
                 System.out.println("Commands list:" +
                         "\nuserInfo - search for specified user" +
                         "\nprintAll - prints all data" +
-                        "\nexit - closes program");
+                        "\nback - return to data set choice");
                 command = reader.nextLine();
 
-                if (command.equalsIgnoreCase("userInfo")) {
-                    System.out.println("Enter user name");
-                    String user = reader.nextLine();
-                    if (this.users.containsKey(user)) {
-                        this.users.get(user).forEach(System.out::println);
-                    }
-                }
+                switch (command.toLowerCase()) {
+                    case "userinfo":
+                        System.out.println("Enter user name");
+                        String user = reader.nextLine();
+                        if (this.users.containsKey(user)) {
+                            this.users.get(user).forEach(System.out::println);
+                        } else {
+                            System.out.println("Error: Unknown user");
+                        }
+                        break;
 
-                if (command.equalsIgnoreCase("printAll")) {
-                    for (String key: this.users.keySet()) {
-                        System.out.print("\n" + key);
-                        this.users.get(key).forEach(System.out::println);
-                    }
-                }
-            }
+                    case "printall":
+                        for (String key : this.users.keySet()) {
+                            System.out.print("\n" + key);
+                            this.users.get(key).forEach(System.out::println);
+                        }
+                        break;
 
-            if (command.equalsIgnoreCase("2") || command.equalsIgnoreCase("3")) {
+                    case "back":
+                        break;
+
+                    default:
+                        System.out.println("Error: Unknown command");
+                        break;
+                    }
+                } else if (command.equalsIgnoreCase("2") || command.equalsIgnoreCase("3")) {
 
                 if (command.equalsIgnoreCase("2")) {
                     this.selectedList = this.musicAlbumList;
@@ -114,17 +122,18 @@ public class TextUI {
                         "\nsorted - prints data in order" +
                         "\nsearch - search data set by text" +
                         "\nprintAll - prints all data");
-
                 command = reader.nextLine();
 
                 switch (command.toLowerCase()) {
                     case "back":
                         break;
+
                     case "sorted":
                         System.out.println("Sort by:" +
                                 "\nName" +
                                 "\nYear");
                         command = reader.nextLine();
+
                         if (command.equalsIgnoreCase("Name")) {
                             Comparator<MusicGeneralInfo> comparator = Comparator.comparing(MusicGeneralInfo::getName);
                             List<MusicGeneralInfo> printList = this.selectedList;
@@ -137,9 +146,9 @@ public class TextUI {
                                     .sorted((p1, p2) -> {
                                 return p1.getYear() - p2.getYear();
                             }).forEach(value -> System.out.println("\n" + value));
-
                         }
                         break;
+
                     case "search":
                         System.out.println("Enter text");
                         String text = reader.nextLine();
@@ -147,22 +156,22 @@ public class TextUI {
                                 .filter(value -> String.valueOf(value).contains(text))
                                 .forEach(value -> System.out.println("\n" + value));
                         break;
+
                     case "printall":
                         this.selectedList.forEach(value -> System.out.println("\n" + value));
                         break;
-                }
 
+                    default:
+                        System.out.println("Error: Unknown command");
+                        break;
                 }
+                }
+            } else if (command.equalsIgnoreCase("exit")) {
+                break;
+
+            } else {
+                System.out.println("Error: Unknown command");
             }
         }
-
     }
-
-
-
-
-
-
-
-
 }
