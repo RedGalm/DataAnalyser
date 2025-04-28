@@ -1,3 +1,4 @@
+import java.io.File;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -14,7 +15,22 @@ public class TextUI {
         this.musicAlbumList = new ArrayList<>();
         this.artistList = new ArrayList<>();
 
-        try (Scanner scanner = new Scanner(Paths.get("/repository/DataAnalyser/src/data.txt"))) {
+        System.out.println("Enter data filename");
+        String fileName = reader.nextLine();
+        File file = new File(fileName);
+        String path = file.getAbsolutePath();
+        String[] splitPath = path.split("\\\\");
+        List<String> pathParts = new ArrayList<>(Arrays.asList(splitPath));
+        pathParts.removeLast();
+        pathParts.removeFirst();
+        StringBuilder buildingPath = new StringBuilder();
+        for (String value: pathParts) {
+            buildingPath.append("/").append(value);
+        }
+        String newPath = buildingPath.toString();
+
+
+        try (Scanner scanner = new Scanner(Paths.get(newPath + "/src/" + fileName))) {
             int lineNum = 0;
             while (scanner.hasNextLine()) {
                 int existsOrNot = 0;
